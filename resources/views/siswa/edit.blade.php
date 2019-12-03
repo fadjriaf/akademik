@@ -1,31 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Siswa</title>
+	<title>Edit Siswa</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-<h3>Edit Siswa</h3>
- 
- <a href="/siswa"> Kembali</a>
- 
- <br/>
- <br/>
 
- @foreach($siswa as $sis)
- <form action="/siswa/update" method="post">
-     {{ csrf_field() }}
-     <input type="hidden" name="id" value="{{ $sis->id }}"> <br/>
-     Nama <br>
-     <input type="text" required="required" name="nama" value="{{ $sis->nama }}"> <br/>
-     NIS <br>
-     <input type="text" required="required" name="nis" value="{{ $sis->nis }}"> <br/>
-     Alamat <br>
-     <textarea required="required" name="alamat">{{ $sis->alamat }}</textarea> <br/>
-     <input type="submit" value="Update">
- </form>
- @endforeach
+	<div class="container">
+
+		<div class="card mt-5">
+			<div class="card-header text-center">
+				Edit Siswa
+			</div>
+			<div class="card-body">
+                @foreach($siswa as $sis)
+				<form action="/siswa/update" method="post">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" value="{{ $sis->id }}"> <br/>
+                <div class="form-group">
+                    <label for="name">Nama</label>
+                    <input type="text" class="form-control" name="nama" value="{{ $sis->nama }}">
+                </div>
+                <div class="form-group">
+                    <label for="nis">NIS</label>
+                    <input type="text" class="form-control" name="nis" value="{{ $sis->nis }}">
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea class="form-control" name="alamat" value="{{ $sis->alamat }}">{{ $sis->alamat }}</textarea>
+                </div>
+                    <center>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </center>
+                </form>
+                @endforeach
+                <br>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+			</div>
+            <div class="card-footer">
+            <a class="btn btn-primary" href="/siswa"><< Kembali</a> 
+            </div>
+		</div>
+	</div>
 </body>
 </html>
