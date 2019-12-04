@@ -60,6 +60,8 @@ Route::get('/enkripsi', 'EnController@enkripsi');
 Route::get('/data/', 'EnController@data');
 Route::get('/data/{data_rahasia}', 'EnController@proses');
 
+// Hashing
+Route::get('/hash', 'EnController@hash');
 
 // Route::prefix('/home/siswa')->group(function () {
 //     Route::get('/', 'SiswaController@index')->name('index.siswa');
