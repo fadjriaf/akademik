@@ -53,6 +53,9 @@ Route::get('/upload', 'UploadController@upload');
 Route::post('/upload/proses', 'UploadController@proses_upload');
 Route::get('/upload/hapus/{id}', 'UploadController@hapus');
 
+
+
+
 // Route::prefix('/home/siswa')->group(function () {
 //     Route::get('/', 'SiswaController@index')->name('index.siswa');
 //     Route::get('/tambah', 'SiswaController@tambah')->name('tambah.siswa');
