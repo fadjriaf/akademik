@@ -22,7 +22,7 @@ class SiswaController extends Controller
         $this->middleware('auth');
     }
 
-    //
+    // Index
     public function index()
     {
     	$siswa = DB::table('siswa')->where("deleted_at", "=", null)->paginate(7);
@@ -30,6 +30,7 @@ class SiswaController extends Controller
     	return view('siswa.index', ['siswa' => $siswa]);
     }
 
+    // Send Mail
     public function kirim()
     {
         Mail::to("testing@akademik.com")->send(new AkademikEmail());
@@ -37,6 +38,7 @@ class SiswaController extends Controller
 		return "Email has been Send!";
     }
 
+    // Search 
     public function cari(Request $request)
 	{
 		$cari = $request->cari;
@@ -50,13 +52,13 @@ class SiswaController extends Controller
  
 	}
 
-    //
+    // Create or Add New
     public function tambah()
     {
         return view('siswa.tambah');
     }
 
-    //
+    // Print PDF
     public function cetak_pdf()
     {
     	$siswa = Siswa::all();
@@ -65,11 +67,13 @@ class SiswaController extends Controller
     	return $pdf->download('laporan-siswa.pdf');
     }
 
+    // Export Excel
     public function export_excel()
 	{
 		return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
 
+    // Import Excel
     public function import_excel(Request $request)
     {
         // validasi
@@ -97,7 +101,7 @@ class SiswaController extends Controller
     }
 
 
-    //
+    // Store Data
     public function store(Request $request)
     {
         $request->validate([
@@ -119,7 +123,7 @@ class SiswaController extends Controller
         return redirect('/siswa');
     }
 
-    //
+    // Edit Data
     public function edit($id)
     {
         $siswa = DB::table('siswa')->where('id',$id)->get();
@@ -127,7 +131,7 @@ class SiswaController extends Controller
         return view('siswa.edit',['siswa' => $siswa]);
     }
 
-    //
+    // Update Data
     public function update(Request $request)
     {   
         $request->validate([
@@ -139,7 +143,7 @@ class SiswaController extends Controller
             'nis.required' => 'NIS is Required',
             'alamat.required' => 'Alamat is Required',
         ]);
-        
+
         DB::table('siswa')->where('id',$request->id)->update([
             'nama' => $request->nama,
             'nis' => $request->nis,
@@ -149,7 +153,7 @@ class SiswaController extends Controller
         return redirect('/siswa');
     }
 
-    //
+    // Delete
     public function hapus($id)
     {
         // DB::table('siswa')->where('id',$id)->delete();
@@ -168,6 +172,7 @@ class SiswaController extends Controller
         return view('siswa.siswa_trash', ['siswa' => $siswa]);
     }
 
+    // Restore
     public function kembalikan($id)
     {
         $siswa = Siswa::onlyTrashed()->where('id', $id);
@@ -176,6 +181,7 @@ class SiswaController extends Controller
         return redirect('/siswa/trash');
     }
 
+    // Restore All
     public function kembalikan_semua()
     {
         $siswa = Siswa::onlyTrashed();
@@ -184,6 +190,7 @@ class SiswaController extends Controller
         return redirect('/siswa/trash');
     }
 
+    // Delete Perma
     public function hapus_permanen($id)
     {
         $siswa = Siswa::onlyTrashed()->where('id',$id);
@@ -192,6 +199,7 @@ class SiswaController extends Controller
         return redirect('/siswa/trash');
     }
 
+    // Delete All Perma
     public function hapus_permanen_semua()
     {
         $siswa = Siswa::onlyTrashed();
