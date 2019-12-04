@@ -129,7 +129,17 @@ class SiswaController extends Controller
 
     //
     public function update(Request $request)
-    {
+    {   
+        $request->validate([
+            'nama' => 'required',
+            'nis' => 'required',
+            'alamat' => 'required'
+        ], [
+            'nama.required' => 'Name is Required',
+            'nis.required' => 'NIS is Required',
+            'alamat.required' => 'Alamat is Required',
+        ]);
+        
         DB::table('siswa')->where('id',$request->id)->update([
             'nama' => $request->nama,
             'nis' => $request->nis,
