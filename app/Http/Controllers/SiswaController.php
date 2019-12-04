@@ -61,10 +61,11 @@ class SiswaController extends Controller
     // Print PDF
     public function cetak_pdf()
     {
-    	$siswa = Siswa::all();
- 
+        $siswa = Siswa::all();
+        
     	$pdf = PDF::loadview('siswa.siswa_pdf',['siswa'=>$siswa]);
-    	return $pdf->download('laporan-siswa.pdf');
+        // return $pdf->download('laporan-siswa.pdf');
+        return $pdf->stream();
     }
 
     // Export Excel
