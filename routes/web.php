@@ -73,6 +73,13 @@ Route::get('/session/show', 'SessionController@show');
 Route::get('/session/create', 'SessionController@create');
 Route::get('/session/delete', 'SessionController@delete');
 
+// Message Notification
+Route::get('/pesan','NotifController@index');
+Route::get('/pesan/success','NotifController@success');
+Route::get('/pesan/warning','NotifController@warning');
+Route::get('/pesan/fail','NotifController@fail');
+
+
 // Route::prefix('/home/siswa')->group(function () {
 //     Route::get('/', 'SiswaController@index')->name('index.siswa');
 //     Route::get('/tambah', 'SiswaController@tambah')->name('tambah.siswa');
