@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class EnController extends Controller
 {
-    //
+    // Enkripsi
     public function enkripsi(){
 		$encrypted = Crypt::encryptString('Coba Belajar Encrypt & Decrypt');
 		$decrypted = Crypt::decryptString($encrypted);
@@ -18,6 +19,7 @@ class EnController extends Controller
 		echo "Hasil Dekripsi : " . "<br/>" . $decrypted;
     }
     
+    // Url Enkripsi
     public function data() {
         $parameter = [
             'nama' => 'Fadjri Alfalah',
@@ -27,6 +29,7 @@ class EnController extends Controller
         echo "<a href='/data/" . $encrypted . "'>Klik Here</a>";
     }
 
+    // Proses Url Enkripsi
     public function proses($data) {
         $data = Crypt::decrypt($data);
 
@@ -34,4 +37,10 @@ class EnController extends Controller
         echo "<br/>";
         echo "Pekerjaan : " . $data['pekerjaan'];
     }
+
+    // Hash Password
+    public function hash(){
+        $hash_mypass = Hash::make('admin1234');
+		echo $hash_mypass;
+	}
 }
