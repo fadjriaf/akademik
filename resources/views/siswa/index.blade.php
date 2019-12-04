@@ -99,6 +99,7 @@
 						<td>{{ $sis->nis }}</td>
 						<td>{{ $sis->alamat }}</td>
 						<td>
+                            <a class="btn btn-warning btn-sm" href="/siswa/show/{{ $sis->id }}">Show</a>
 							<a class="btn btn-warning btn-sm" href="/siswa/edit/{{ $sis->id }}">Edit</a>
 							<a class="btn btn-danger btn-sm" href="/siswa/hapus/{{ $sis->id }}">Hapus</a>
 						</td>

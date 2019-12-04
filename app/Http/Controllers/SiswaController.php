@@ -154,6 +154,19 @@ class SiswaController extends Controller
         return redirect('/siswa');
     }
 
+    // Show
+    public function show($id)
+    {
+        //
+        $siswa = Siswa::find($id);
+
+        if(!$siswa){
+            abort(404);
+        }
+
+        return view('siswa.show')->with('siswa', $siswa);
+    }
+
     // Delete
     public function hapus($id)
     {

@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/siswa', 'SiswaController@index'); // Index
 Route::get('/siswa/tambah','SiswaController@tambah'); // Create
 Route::post('/siswa/store','SiswaController@store'); // Store
-// View Don't Forget
+Route::get('/siswa/show/{id}','SiswaController@show'); // Show
 Route::get('/siswa/edit/{id}','SiswaController@edit'); // Edit
 Route::post('/siswa/update','SiswaController@update'); // Update
 Route::get('/siswa/hapus/{id}','SiswaController@hapus'); // Delete
