@@ -63,6 +63,12 @@ Route::get('/data/{data_rahasia}', 'EnController@proses');
 // Hashing
 Route::get('/hash', 'EnController@hash');
 
+
+Route::get('/datatable', function () {
+    return view('datatable');
+});
+
+
 // Route::prefix('/home/siswa')->group(function () {
 //     Route::get('/', 'SiswaController@index')->name('index.siswa');
 //     Route::get('/tambah', 'SiswaController@tambah')->name('tambah.siswa');
