@@ -20,7 +20,7 @@ class SiswaExport implements FromCollection, WithHeadings, ShouldAutoSize
     public function headings(): array
     {
         return [
-            '#',
+            'No',
             'Nama',
             'NIS',
             'Alamat',
