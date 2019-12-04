@@ -53,7 +53,12 @@ Route::get('/upload', 'UploadController@upload');
 Route::post('/upload/proses', 'UploadController@proses_upload');
 Route::get('/upload/hapus/{id}', 'UploadController@hapus');
 
+// Encrypted
+Route::get('/enkripsi', 'EnController@enkripsi');
 
+// Encrypted URL
+Route::get('/data/', 'EnController@data');
+Route::get('/data/{data_rahasia}', 'EnController@proses');
 
 
 // Route::prefix('/home/siswa')->group(function () {
