@@ -5,26 +5,28 @@ namespace App\Exports;
 use App\Siswa;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use DB;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class SiswaExport implements FromCollection, WithHeadings
+class SiswaExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        // return Siswa::all();
-
-        $siswa = DB::table('siswa')->select('nama', 'nis', 'alamat')->get();
-        return $siswa ;
+        return Siswa::all();
     }
 
-    public function headings(): array {
+    public function headings(): array
+    {
         return [
+            '#',
             'Nama',
-            'Nis',
-            'Alamat'
+            'NIS',
+            'Alamat',
+            'Created at',
+            'Updated at',
+            'Deleted at'
         ];
     }
 }
