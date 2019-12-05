@@ -26,7 +26,7 @@ class SiswaController extends Controller
     // Index
     public function index()
     {
-    	$siswa = DB::table('siswa')->where("deleted_at", "=", null)->paginate(7);
+        $siswa = DB::table('siswa')->where("deleted_at", "=", null)->paginate(7);
         
     	return view('siswa.index', ['siswa' => $siswa]);
     }
