@@ -209,7 +209,7 @@ class SiswaController extends Controller
         $siswa = Siswa::onlyTrashed();
         $siswa->restore();
         
-        alert()->success('All Data has been Restored!', 'Success');
+        alert()->success('All Data has been Restored!', 'Success')->autoclose(2000);
         return redirect('/siswa/trash');
     }
 
@@ -230,7 +230,7 @@ class SiswaController extends Controller
         $siswa = Siswa::onlyTrashed();
         $siswa->forceDelete();
         
-        alert()->success('All Data has been Deleted Permanently!', 'Success');
+        alert()->success('All Data has been Deleted Permanently!', 'Success')->autoclose(2000);
         return redirect('/siswa/trash');
     }
 
