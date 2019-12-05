@@ -94,13 +94,29 @@
                 <br><br>
                 <table class="table table-bordered">
 					<tr>
+                        <th>No.</th>
 						<th>Nama</th>
 						<th>NIS</th>
 						<th>Alamat</th>
 						<th>Action</th>
 					</tr>
+
+                    <!-- Count Num in No -->
+                    <?php
+                    $counter = '';
+                    for($j = 1; $j <= $siswa->currentPage(); $j++){
+                        if($j >= 2 ){
+                            // Pagination set 7 controller
+                            $j += (7*($siswa->currentPage()-1))-1;
+                        }
+                        $counter = $j;  
+                    }
+                    $i = $counter; 
+                    ?>
+
 					@foreach($siswa as $sis)
 					<tr>
+                        <td width="1%" class="text-center">{{ $i++ }}</td>
 						<td>{{ $sis->nama }}</td>
 						<td>{{ $sis->nis }}</td>
 						<td>{{ $sis->alamat }}</td>
