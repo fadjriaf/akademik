@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\Mail\AkademikEmail;
 use Illuminate\Support\Facades\Mail;
+use Alert;
 
 class SiswaController extends Controller
 {   
@@ -26,7 +27,7 @@ class SiswaController extends Controller
     public function index()
     {
     	$siswa = DB::table('siswa')->where("deleted_at", "=", null)->paginate(7);
- 
+        
     	return view('siswa.index', ['siswa' => $siswa]);
     }
 
@@ -70,8 +71,8 @@ class SiswaController extends Controller
 
     // Export Excel
     public function export_excel()
-	{
-		return Excel::download(new SiswaExport, 'siswa.xlsx');
+	{   
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
 
     // Import Excel
@@ -95,7 +96,8 @@ class SiswaController extends Controller
 		Excel::import(new SiswaImport, public_path('/file_siswa/'.$nama_file));
  
 		// notifikasi dengan session
-		Session::flash('sukses','Data Siswa Berhasil Diimport!');
+        // Session::flash('sukses','Data Siswa Berhasil Diimport!');
+        alert()->success('Data Siswa Berhasil Diimport!', 'Success');
  
 		// alihkan halaman kembali
 		return redirect('/siswa');
@@ -120,7 +122,8 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'alamat' => $request->alamat
         ]);
-
+        
+        alert()->success('Data has been Inputed!', 'Success');
         return redirect('/siswa');
     }
 
@@ -150,7 +153,8 @@ class SiswaController extends Controller
             'nis' => $request->nis,
             'alamat' => $request->alamat
         ]);
-
+        
+        alert()->success('Data has been Edited!', 'Success');
         return redirect('/siswa');
     }
 
@@ -174,7 +178,9 @@ class SiswaController extends Controller
 
         $siswa = Siswa::find($id);
     	$siswa->delete();
-            
+        
+        // alert()->success('Data has been moved to Trash!','Deleted');
+        Session::flash('hapus','Data has been moved to Trash!');
         return redirect('/siswa');
     }
 
@@ -192,6 +198,8 @@ class SiswaController extends Controller
         $siswa = Siswa::onlyTrashed()->where('id', $id);
         $siswa->restore();
 
+        // alert()->success('Data has been Restored!', 'Success');
+        Session::flash('sukses','Data has been Restored!');
         return redirect('/siswa/trash');
     }
 
@@ -200,7 +208,8 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::onlyTrashed();
         $siswa->restore();
-    
+        
+        alert()->success('All Data has been Restored!', 'Success');
         return redirect('/siswa/trash');
     }
 
@@ -209,7 +218,9 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::onlyTrashed()->where('id',$id);
         $siswa->forceDelete();
-    
+        
+        // alert()->success('Data has been Deleted Permanentely!', 'Success');
+        Session::flash('hapus','Data has been Deleted Permanently!');
         return redirect('/siswa/trash');
     }
 
@@ -218,7 +229,8 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::onlyTrashed();
         $siswa->forceDelete();
-    
+        
+        alert()->success('All Data has been Deleted Permanently!', 'Success');
         return redirect('/siswa/trash');
     }
 
