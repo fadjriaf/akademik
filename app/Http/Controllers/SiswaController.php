@@ -123,7 +123,7 @@ class SiswaController extends Controller
             'alamat' => $request->alamat
         ]);
         
-        alert()->success('Data has been Inputed!', 'Success');
+        alert()->success('Data has been Inserted!', 'Success');
         return redirect('/siswa');
     }
 

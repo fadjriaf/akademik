@@ -100,7 +100,7 @@
 						<th>Action</th>
 					</tr>
 					@foreach($siswa as $sis)
-					<tr>    
+					<tr>
 						<td>{{ $sis->nama }}</td>
 						<td>{{ $sis->nis }}</td>
 						<td>{{ $sis->alamat }}</td>
