@@ -13,17 +13,16 @@
 				Recycle Bin Siswa
 			</div>
 			<div class="card-body">
-
-				<a href="/siswa"><< Kembali</a> 
-                <br><br>
+				<a href="/siswa" class="btn btn-primary"><< Kembali</a> 
 				<!-- |
 				<a href="/siswa/trash" class="btn btn-sm btn-primary">Tong Sampah</a> -->
 
-				<a href="/siswa/kembalikan_semua">Kembalikan Semua</a>
-				|
-				<a href="/siswa/hapus_permanen_semua">Hapus Permanen Semua</a>
-				<br/>
-				<br/>
+				<div class="text-right" style="float: right;">
+				<a href="/siswa/kembalikan_semua" class="btn btn-success">Kembalikan Semua</a>
+				<a href="/siswa/hapus_permanen_semua" class="btn btn-danger">Hapus Permanen Semua</a>
+				</div>
+
+				<br/><br>
 				@if ($sukses = Session::get('sukses'))
                     <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button> 
