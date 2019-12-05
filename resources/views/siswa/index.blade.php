@@ -94,11 +94,11 @@
                 <br><br>
                 <table class="table table-bordered">
 					<tr>
-                        <th>No.</th>
-						<th>Nama</th>
-						<th>NIS</th>
-						<th>Alamat</th>
-						<th>Action</th>
+                        <th class="text-center">No.</th>
+						<th class="text-center">Nama</th>
+						<th class="text-center">NIS</th>
+						<th class="text-center">Alamat</th>
+						<th class="text-center">Action</th>
 					</tr>
 
                     <!-- Count Num in No -->
