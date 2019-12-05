@@ -13,10 +13,6 @@
 				Recycle Bin Siswa
 			</div>
 			<div class="card-body">
-				<a href="/siswa" class="btn btn-primary"><< Kembali</a> 
-				<!-- |
-				<a href="/siswa/trash" class="btn btn-sm btn-primary">Tong Sampah</a> -->
-
 				<div class="text-right" style="float: right;">
 				<a href="/siswa/kembalikan_semua" class="btn btn-success">Kembalikan Semua</a>
 				<a href="/siswa/hapus_permanen_semua" class="btn btn-danger">Hapus Permanen Semua</a>
@@ -60,6 +56,9 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="card-footer">
+            	<a class="btn btn-primary" href="/siswa"><< Kembali</a> 
+            </div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
